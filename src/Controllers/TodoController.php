@@ -18,7 +18,7 @@ class TodoController extends Controller {
         $result = TodoItem::createTodo($body['title']);
 
         if ($result) {
-          $this->redirect('/');
+            $this->redirect('/');
         }
     }
 
@@ -26,8 +26,21 @@ class TodoController extends Controller {
     {
         $body = filter_body(); // gives you the body of the request (the "envelope" contents)
         $todoId = $urlParams['id']; // the id of the todo we're trying to update
-        $completed = isset($body['status']) ? 1 : 0; // whether or not the todo has been checked or not
+        $title = $body['title'];
+        $completed = isset($body['status']) ? 1 : 0;
 
+        if ($completed == 1) {
+            $completed = "true";
+        } else {
+            $completed = "false";
+        }
+
+        // whether or not the todo has been checked or not
+        $result = TodoItem::updateTodo($todoId, $title, $completed);
+        if ($result) {
+            $this->redirect('/');
+        }
+    }
         // TODO: Implement me!
         // This action should update a specific todo item in the todos table using the TodoItem::updateTodo method.
         // Try and figure out what parameters you need to pass to the updateTodo-method in the TodoItem model.
@@ -35,12 +48,14 @@ class TodoController extends Controller {
         // if there's a result
           // use the redirect method to send the user back to the list of todos $this->redirect('/');
         // otherwise, throw an exception or show an error message
-    }
+    
 
     public function delete($urlParams)
     {
-      // TODO: Implement me!
+        // TODO: Implement me!
+
     }
+    
 
     /**
      * OPTIONAL Bonus round!
@@ -50,12 +65,15 @@ class TodoController extends Controller {
      */
     public function toggle()
     {
-      // (OPTIONAL) TODO: This action should toggle all todos to completed, or not completed.
-    }
+
+            // (OPTIONAL) TODO: This action should toggle all todos to completed, or not completed.
+  }
+            
+    
 
     public function clear()
     {
-      // (OPTIONAL) TODO: This action should remove all completed todos from the table.
+// (OPTIONAL) TODO: This action should remove all completed todos from the table.
     }
 
 }
