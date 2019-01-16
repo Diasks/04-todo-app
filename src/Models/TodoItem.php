@@ -21,8 +21,6 @@ class TodoItem extends Model
 
     public static function updateTodo($todoId, $title, $completed = null)
     {
-        // TODO: Implement me!
-        // Update a specific todo
         try {
             $query = "UPDATE todos
             SET title = '$title',
@@ -31,42 +29,46 @@ class TodoItem extends Model
             self::$db->query($query);
             $result = self::$db->execute();
         
-           return $result;
-}catch (PDOException $err) {
+            return $result;
+        } catch (PDOException $err) {
             return $err->getMessage();
         }
-    
     }
 
     public static function deleteTodo($todoId)
     {
         // TODO: Implement me!
         // Delete a specific todo
-        try {}catch (PDOException $err) {
+        try {
+        } catch (PDOException $err) {
             return $err->getMessage();
         }
-     
     }
     
     // (Optional bonus methods below)
 
     
     public static function toggleTodos()
-    { 
-  // TODO: Implement me!
+    {
+        // TODO: Implement me!
         // This is to toggle all todos either as completed or not completed
-        try {}catch (PDOException $err) {
+        try {
+        } catch (PDOException $err) {
             return $err->getMessage();
         }
     }
 
     public static function clearCompletedTodos()
     {
-    //     TODO: Implement me!
-    //     This is to delete all the completed todos from the database
-    try {}catch (PDOException $err) {
-        return $err->getMessage();
+        //     TODO: Implement me!
+        //     This is to delete all the completed todos from the database
+        try {
+            $query = "DELETE FROM todos WHERE completed = ’true’";
+            self::$db->query($query);
+            $result = self::$db->execute();
+            return $result;
+        } catch (PDOException $err) {
+            return $err->getMessage();
+        }
     }
-    }
-
 }
