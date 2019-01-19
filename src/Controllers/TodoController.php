@@ -64,11 +64,6 @@ class TodoController extends Controller
      */
     public function toggle()
     {
-        
-        $result = TodoItem::toggleTodos($todoId);
-if ($result) {
-    $this->redirect('/');
-}
             // (OPTIONAL) TODO: This action should toggle all todos to completed, or not completed.
     }
             
@@ -78,11 +73,7 @@ if ($result) {
     {
         // (OPTIONAL) TODO: This action should remove all completed todos from the table.
        
-        $result = TodoItem::clearCompletedTodos();
-
-        if ($result) {
-            $this->redirect('/');
-        }
+        
     
     }
 }
