@@ -40,6 +40,10 @@ class TodoItem extends Model
         // TODO: Implement me!
         // Delete a specific todo
         try {
+            $query = "DELETE FROM todos WHERE id = $todoId";
+            self::$db->query($query);
+            $result = self::$db->execute();
+           return $result;
         } catch (PDOException $err) {
             return $err->getMessage();
         }
@@ -48,11 +52,18 @@ class TodoItem extends Model
     // (Optional bonus methods below)
 
     
-    public static function toggleTodos()
+    public static function toggleTodos($completed)
     {
         // TODO: Implement me!
         // This is to toggle all todos either as completed or not completed
         try {
+
+            $query = "SELECT * FROM todos SET completed = 'true' 
+            WHERE completed = 'false'";
+            self::$db->query($query);
+            $result = self::$db->execute();
+            return $result;
+
         } catch (PDOException $err) {
             return $err->getMessage();
         }

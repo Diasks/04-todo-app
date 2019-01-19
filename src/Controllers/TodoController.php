@@ -47,6 +47,12 @@ class TodoController extends Controller
     public function delete($urlParams)
     {
         // TODO: Implement me!
+        $todoId = $urlParams['id'];
+        $result = TodoItem::deleteTodo($todoId);
+
+        if ($result) {
+            $this->redirect('/');
+        }
     }
     
 
@@ -58,17 +64,21 @@ class TodoController extends Controller
      */
     public function toggle()
     {
-
+        
+        $result = TodoItem::toggleTodos($todoId);
+if ($result) {
+    $this->redirect('/');
+}
             // (OPTIONAL) TODO: This action should toggle all todos to completed, or not completed.
     }
             
     
 
-    public function clear($todoId)
+    public function clear()
     {
         // (OPTIONAL) TODO: This action should remove all completed todos from the table.
-     
-        $result = TodoItem::clearCompletedTodos($todoId);
+       
+        $result = TodoItem::clearCompletedTodos();
 
         if ($result) {
             $this->redirect('/');
