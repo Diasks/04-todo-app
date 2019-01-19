@@ -62,14 +62,10 @@ class TodoController extends Controller
      * The two methods below are optional, feel free to try and complete them
      * if you're aiming for a higher grade.
      */
+
     public function toggle()
     {
-        $result = TodoItem::toggleTodos($todoId);
-
-        if ($result) {
-            $this->redirect('/');
-        }
-            // (OPTIONAL) TODO: This action should toggle all todos to completed, or not completed.
+        // (OPTIONAL) TODO: This action should toggle all todos to completed, or not completed.
     }
             
     
@@ -84,6 +80,5 @@ class TodoController extends Controller
         if ($result) {
             $this->redirect('/');
         }
-    
     }
 }

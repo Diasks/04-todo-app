@@ -43,7 +43,7 @@ class TodoItem extends Model
             $query = "DELETE FROM todos WHERE id = $todoId";
             self::$db->query($query);
             $result = self::$db->execute();
-           return $result;
+            return $result;
         } catch (PDOException $err) {
             return $err->getMessage();
         }
@@ -56,11 +56,6 @@ class TodoItem extends Model
     {
         // TODO: Implement me!
         // This is to toggle all todos either as completed or not completed
-        $query = "UPDATE todos
-        SET completed = 'true'";
-        self::$db->query($query);
-        $result = self::$db->execute();
-       
     }
 
     public static function clearCompletedTodos($todoId)
@@ -71,7 +66,7 @@ class TodoItem extends Model
             $query = "DELETE FROM todos WHERE completed = 'true'";
             self::$db->query($query);
             $result = self::$db->execute();
-           return $result;
+            return $result;
         } catch (PDOException $err) {
             return $err->getMessage();
         }
